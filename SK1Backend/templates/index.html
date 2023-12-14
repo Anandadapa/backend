@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>student score</title>
+    <style>
+        table, th,td {
+            border: 1px solid black;
+            border-collapse: collapse;           
+            padding-left: 50px;
+            padding-right: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <form action="/" method="POST">
+
+        <input name="name" placeholder="Name" type="text">
+        <input name="score" placeholder="Score" type="number">
+        <input type="submit" value="Add Score">
+    </form>
+    <table>
+    <tr>
+        <td>Name</td>
+        <td>Score</td>
+        <td>Perubahan</td>
+        
+    </tr>  
+       {% for score in score %}
+           
+        <tr>
+            <td>{{ score.name}}</td>
+            <td>{{score.score}}</td>
+            <td>
+                <a href="/edit/{{score['id']}}">Edit</a>
+                <a href="/delete/{{score['id']}}" onclick="return confirm ('Apakah Anda Yakin Akan Menghapus?');">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/logout">LogOut</a><br>
+    <a href="/register">Register</a><br>
+    <a href="/login">Login</a>
+    
+</body>
+</html>
